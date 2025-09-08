@@ -15,20 +15,20 @@ const Welcome = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-sky-light/30 to-forest-medium/40" />
       </div>
       
-      {/* Floating elements */}
-      <div className="absolute top-20 left-10 w-4 h-4 bg-magic-glow rounded-full animate-float opacity-60" />
-      <div className="absolute top-40 right-20 w-3 h-3 bg-magic-warm rounded-full animate-float opacity-70" style={{ animationDelay: '1s' }} />
-      <div className="absolute bottom-32 left-20 w-5 h-5 bg-magic-soft rounded-full animate-float opacity-50" style={{ animationDelay: '2s' }} />
+      {/* Static decorative elements */}
+      <div className="absolute top-20 left-10 w-4 h-4 bg-magic-glow rounded-full opacity-60" />
+      <div className="absolute top-40 right-20 w-3 h-3 bg-magic-warm rounded-full opacity-70" />
+      <div className="absolute bottom-32 left-20 w-5 h-5 bg-magic-soft rounded-full opacity-50" />
       
       {/* Main content */}
       <div className="relative z-10 flex min-h-screen items-center justify-center px-4">
         <div className="text-center max-w-2xl mx-auto">
           {/* Welcome message */}
-          <div className="mb-8 animate-float">
+          <div className="mb-8">
             <h1 className="text-6xl md:text-7xl font-bold text-forest-deep mb-4 drop-shadow-lg">
               Welcome to
             </h1>
-            <h2 className="text-5xl md:text-6xl font-bold bg-gradient-magic bg-clip-text text-transparent drop-shadow-lg animate-shimmer">
+            <h2 className="text-5xl md:text-6xl font-bold bg-gradient-magic bg-clip-text text-transparent drop-shadow-lg">
               Doodled Forest
             </h2>
           </div>
@@ -43,16 +43,16 @@ const Welcome = () => {
             variant="magic" 
             size="lg" 
             onClick={() => navigate('/story')}
-            className="text-xl px-12 py-6 h-auto rounded-full shadow-glow hover:shadow-forest animate-forest-sway"
+            className="text-xl px-12 py-6 h-auto rounded-full shadow-glow hover:shadow-forest"
           >
             Start Writing Adventure
           </Button>
           
           {/* Decorative elements */}
           <div className="mt-12 flex justify-center space-x-8 opacity-70">
-            <div className="text-2xl animate-float" style={{ animationDelay: '0.5s' }}>🌿</div>
-            <div className="text-2xl animate-float" style={{ animationDelay: '1.5s' }}>🦌</div>
-            <div className="text-2xl animate-float" style={{ animationDelay: '2.5s' }}>✨</div>
+            <div className="text-2xl">🌿</div>
+            <div className="text-2xl">🦌</div>
+            <div className="text-2xl">✨</div>
           </div>
         </div>
       </div>
