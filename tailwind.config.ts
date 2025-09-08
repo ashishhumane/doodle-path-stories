@@ -47,6 +47,31 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Forest theme colors
+        forest: {
+          deep: "hsl(var(--forest-deep))",
+          medium: "hsl(var(--forest-medium))",
+          light: "hsl(var(--forest-light))",
+          moss: "hsl(var(--forest-moss))",
+          leaf: "hsl(var(--forest-leaf))",
+        },
+        earth: {
+          dark: "hsl(var(--earth-dark))",
+          medium: "hsl(var(--earth-medium))",
+          light: "hsl(var(--earth-light))",
+        },
+        sky: {
+          light: "hsl(var(--sky-light))",
+          medium: "hsl(var(--sky-medium))",
+        },
+        water: {
+          light: "hsl(var(--water-light))",
+        },
+        magic: {
+          warm: "hsl(var(--magic-warm))",
+          soft: "hsl(var(--magic-soft))",
+          glow: "hsl(var(--magic-glow))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -58,12 +83,36 @@ export default {
           ring: "hsl(var(--sidebar-ring))",
         },
       },
+      backgroundImage: {
+        'gradient-forest': 'var(--gradient-forest)',
+        'gradient-earth': 'var(--gradient-earth)',
+        'gradient-sky': 'var(--gradient-sky)',
+        'gradient-magic': 'var(--gradient-magic)',
+        'gradient-leaf': 'var(--gradient-leaf)',
+      },
+      boxShadow: {
+        'forest': 'var(--shadow-forest)',
+        'gentle': 'var(--shadow-gentle)',
+        'glow': 'var(--shadow-glow)',
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-10px)' },
+        },
+        shimmer: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(100%)' },
+        },
+        "forest-sway": {
+          '0%, 100%': { transform: 'rotate(-1deg)' },
+          '50%': { transform: 'rotate(1deg)' },
+        },
         "accordion-down": {
           from: {
             height: "0",
@@ -84,6 +133,9 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "float": "float 3s ease-in-out infinite",
+        "shimmer": "shimmer 2s ease-in-out infinite",
+        "forest-sway": "forest-sway 4s ease-in-out infinite",
       },
     },
   },

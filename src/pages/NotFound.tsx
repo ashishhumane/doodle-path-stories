@@ -9,12 +9,13 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100">
+    <div className="flex min-h-screen items-center justify-center bg-gradient-sky">
       <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">404</h1>
-        <p className="mb-4 text-xl text-gray-600">Oops! Page not found</p>
-        <a href="/" className="text-blue-500 underline hover:text-blue-700">
-          Return to Home
+        <div className="text-6xl mb-4">🌲</div>
+        <h1 className="mb-4 text-4xl font-bold text-forest-deep">Lost in the Forest?</h1>
+        <p className="mb-4 text-xl text-forest-medium">This path doesn't exist in our magical forest</p>
+        <a href="/" className="text-forest-light underline hover:text-forest-moss font-semibold">
+          🏠 Return to Forest Entrance
         </a>
       </div>
     </div>

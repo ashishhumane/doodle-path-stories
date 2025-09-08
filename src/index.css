@@ -2,41 +2,79 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Forest-themed design system for dysgraphia website */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Forest theme colors */
+    --background: 120 15% 97%;
+    --foreground: 150 25% 15%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Forest floor and tree colors */
+    --forest-deep: 140 30% 15%;
+    --forest-medium: 130 35% 25%;
+    --forest-light: 120 40% 45%;
+    --forest-moss: 115 45% 55%;
+    --forest-leaf: 110 50% 65%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    /* Earth and bark tones */
+    --earth-dark: 25 35% 20%;
+    --earth-medium: 30 40% 35%;
+    --earth-light: 35 45% 50%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Sky and water */
+    --sky-light: 200 60% 85%;
+    --sky-medium: 210 55% 70%;
+    --water-light: 190 50% 75%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Magical accents */
+    --magic-warm: 45 85% 70%;
+    --magic-soft: 320 40% 75%;
+    --magic-glow: 60 80% 80%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Semantic tokens */
+    --card: 120 20% 98%;
+    --card-foreground: 150 25% 15%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --popover: 120 20% 98%;
+    --popover-foreground: 150 25% 15%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --primary: 130 35% 25%;
+    --primary-foreground: 120 15% 97%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --secondary: 115 45% 55%;
+    --secondary-foreground: 150 25% 15%;
 
-    --radius: 0.5rem;
+    --muted: 120 25% 92%;
+    --muted-foreground: 140 20% 45%;
+
+    --accent: 110 50% 65%;
+    --accent-foreground: 150 25% 15%;
+
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 120 15% 97%;
+
+    --border: 120 20% 88%;
+    --input: 120 20% 95%;
+    --ring: 130 35% 25%;
+
+    --radius: 1rem;
+
+    /* Gradients */
+    --gradient-forest: linear-gradient(135deg, hsl(var(--forest-deep)), hsl(var(--forest-medium)));
+    --gradient-earth: linear-gradient(45deg, hsl(var(--earth-dark)), hsl(var(--earth-medium)));
+    --gradient-sky: linear-gradient(180deg, hsl(var(--sky-light)), hsl(var(--sky-medium)));
+    --gradient-magic: linear-gradient(135deg, hsl(var(--magic-warm)), hsl(var(--magic-soft)));
+    --gradient-leaf: linear-gradient(45deg, hsl(var(--forest-moss)), hsl(var(--forest-leaf)));
+
+    /* Shadows */
+    --shadow-forest: 0 8px 32px hsl(var(--forest-deep) / 0.15);
+    --shadow-gentle: 0 4px 16px hsl(var(--forest-medium) / 0.12);
+    --shadow-glow: 0 0 24px hsl(var(--magic-glow) / 0.3);
+
+    /* Transitions */
+    --transition-forest: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-gentle: all 0.3s ease-out;
 
     --sidebar-background: 0 0% 98%;
 
