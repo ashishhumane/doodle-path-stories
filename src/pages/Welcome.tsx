@@ -28,7 +28,7 @@ const Welcome = () => {
             <h1 className="text-6xl md:text-7xl font-bold text-forest-deep mb-4 drop-shadow-lg">
               Welcome to
             </h1>
-            <h2 className="text-5xl md:text-6xl font-bold bg-gradient-magic bg-clip-text text-transparent drop-shadow-lg">
+            <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-white to-green-600 bg-clip-text text-transparent drop-shadow-lg">
               Doodled Forest
             </h2>
           </div>
