@@ -4,6 +4,8 @@ import { Card } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import { Upload, Camera, FileText, CheckCircle } from "lucide-react";
+import axios from "axios";
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 const UploadPage = () => {
   const navigate = useNavigate();
@@ -31,28 +33,43 @@ const UploadPage = () => {
   };
 
   const handleUpload = async () => {
-    if (!selectedFile) return;
+    if (!selectedFile) {
+      toast({
+        title: "No File Selected",
+        description: "Please select an image before uploading.",
+        variant: "destructive",
+      });
+      return;
+    }
 
     try {
       setUploading(true);
-      
-      // Simulate API call for handwriting analysis
-      // Replace with actual API call to your backend
+
       const formData = new FormData();
-      formData.append('handwriting', selectedFile);
-      
-      // Simulate upload delay
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
+      formData.append("handwriting", selectedFile);
+
+      const response = await axios.post(
+        `${BACKEND_URL}/api/dysgraphia/handwriting/upload`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      console.log("Upload response:", response.data);
+
       toast({
         title: "Upload Successful! 🎉",
         description: "Your handwriting is being analyzed by forest AI!",
       });
-      
-      // Navigate to feedback page
-      navigate('/feedback');
-      
+
+      // Pass analysis result to feedback page
+      navigate("/feedback", { state: { analysis: response.data.analysis } });
+
     } catch (error) {
+      console.error("Upload error:", error);
       toast({
         title: "Upload Failed",
         description: "There was an error uploading your handwriting. Please try again.",
@@ -62,6 +79,8 @@ const UploadPage = () => {
       setUploading(false);
     }
   };
+
+
 
   const triggerFileInput = () => {
     fileInputRef.current?.click();
@@ -80,7 +99,7 @@ const UploadPage = () => {
 
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-2xl mx-auto">
-          
+
           {/* Instructions */}
           <Card className="p-6 mb-8 bg-gradient-leaf/20 border-forest-leaf/40 shadow-gentle">
             <div className="text-center">
@@ -89,8 +108,8 @@ const UploadPage = () => {
                 Time to Share Your Story!
               </h3>
               <p className="text-forest-medium">
-                Take a clear photo of your handwritten story. Make sure the lighting is good 
-                and all your writing is visible. Our forest AI will analyze your handwriting 
+                Take a clear photo of your handwritten story. Make sure the lighting is good
+                and all your writing is visible. Our forest AI will analyze your handwriting
                 and provide helpful feedback!
               </p>
             </div>
@@ -107,7 +126,7 @@ const UploadPage = () => {
             />
 
             {!previewUrl ? (
-              <div 
+              <div
                 onClick={triggerFileInput}
                 className="border-2 border-dashed border-forest-moss rounded-lg p-12 text-center cursor-pointer hover:border-forest-leaf hover:bg-forest-moss/5 transition-all duration-300"
               >
@@ -125,8 +144,8 @@ const UploadPage = () => {
             ) : (
               <div className="space-y-6">
                 <div className="relative">
-                  <img 
-                    src={previewUrl} 
+                  <img
+                    src={previewUrl}
                     alt="Preview of handwriting"
                     className="w-full max-h-96 object-contain rounded-lg shadow-gentle"
                   />
@@ -135,18 +154,18 @@ const UploadPage = () => {
                     Ready to analyze
                   </div>
                 </div>
-                
+
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button 
-                    variant="outline" 
+                  <Button
+                    variant="outline"
                     onClick={triggerFileInput}
                     className="flex items-center gap-2"
                   >
                     <FileText size={16} />
                     Choose Different Photo
                   </Button>
-                  <Button 
-                    variant="magic" 
+                  <Button
+                    variant="magic"
                     onClick={handleUpload}
                     disabled={uploading}
                     className="flex items-center gap-2 px-8"
@@ -170,8 +189,8 @@ const UploadPage = () => {
 
           {/* Navigation */}
           <div className="mt-8 flex justify-center">
-            <Button 
-              variant="earth" 
+            <Button
+              variant="earth"
               onClick={() => navigate('/story')}
               className="px-8"
             >
