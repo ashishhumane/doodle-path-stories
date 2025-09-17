@@ -4,6 +4,9 @@ import { Card } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import storyScene from "@/assets/story-scene.jpg";
+import axios from 'axios'
+import { log } from "console";
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 const Story = () => {
   const navigate = useNavigate();
@@ -12,23 +15,23 @@ const Story = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate API call - replace with actual API call to /api/dysgraphia/story
     const fetchStory = async () => {
       try {
         setLoading(true);
-        // Placeholder story for demo
-        const demoStory = `Once upon a time, in a magical forest, there lived a wise old owl named Oliver. Oliver loved to help young woodland creatures learn new things. One day, he decided to teach them about the importance of practicing their writing.
 
-"Writing is like creating magic," Oliver hooted softly. "Each letter you form is like planting a seed that will grow into wonderful thoughts and stories."
+        const { data } = await axios.get(`${BACKEND_URL}/api/dysgraphia/story`);
+        // Assuming the API returns { story: "..." }
+        let storyyy = data.response.text;
 
-The forest animals gathered around as Oliver continued, "Today, I want you to practice writing about your favorite thing in the forest. It could be the way sunlight dances through the leaves, the sound of the babbling brook, or the feeling of soft moss under your paws."
+        // Remove leading dashes or newlines
+        storyyy = storyyy.replace(/^---\s*\n*/, "").trim();
 
-Help Oliver by writing your own story about what you love most in the forest!`;
+        setStory(storyyy);
+
         
-        // Simulate network delay
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        setStory(demoStory);
+        
       } catch (error) {
+        console.error("Error fetching story:", error);
         toast({
           title: "Story Loading Error",
           description: "Unable to fetch story. Please try again.",
@@ -41,6 +44,11 @@ Help Oliver by writing your own story about what you love most in the forest!`;
 
     fetchStory();
   }, [toast]);
+
+  useEffect(() => {
+    console.log("hhslhl:",story);
+  },[story])
+ 
 
   return (
     <div className="min-h-screen bg-gradient-sky">
@@ -66,8 +74,8 @@ Help Oliver by writing your own story about what you love most in the forest!`;
             <>
               {/* Story illustration */}
               <div className="mb-8">
-                <img 
-                  src={storyScene} 
+                <img
+                  src={storyScene}
                   alt="Forest story scene with reading animals"
                   className="w-full h-64 md:h-80 object-cover rounded-lg shadow-forest"
                 />
@@ -76,11 +84,15 @@ Help Oliver by writing your own story about what you love most in the forest!`;
               {/* Story content */}
               <Card className="p-8 mb-8 shadow-gentle border-forest-moss/30 bg-card/95 backdrop-blur-sm">
                 <div className="prose prose-lg max-w-none">
-                  {story.split('\n\n').map((paragraph, index) => (
+                  {story && story.split('\n\n').map((paragraph, index) => (
                     <p key={index} className="text-forest-deep leading-relaxed mb-4 text-lg">
                       {paragraph}
                     </p>
                   ))}
+
+                  {/* {
+                    story && story 
+                  } */}
                 </div>
               </Card>
 
@@ -91,7 +103,7 @@ Help Oliver by writing your own story about what you love most in the forest!`;
                     ✍️ Your Writing Adventure Begins!
                   </h3>
                   <p className="text-forest-medium mb-4">
-                    Use a pencil and paper to write your own story inspired by Oliver's tale. 
+                    Use a pencil and paper to write your own story inspired by Oliver's tale.
                     When you're done, take a photo of your handwriting and we'll help you improve!
                   </p>
                 </div>
@@ -99,15 +111,15 @@ Help Oliver by writing your own story about what you love most in the forest!`;
 
               {/* Action buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button 
-                  variant="earth" 
+                <Button
+                  variant="earth"
                   onClick={() => navigate('/')}
                   className="px-8 py-3"
                 >
                   🏠 Back to Forest Entrance
                 </Button>
-                <Button 
-                  variant="magic" 
+                <Button
+                  variant="magic"
                   onClick={() => navigate('/upload')}
                   className="px-8 py-3"
                 >
