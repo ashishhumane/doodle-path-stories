@@ -14,7 +14,15 @@ export default defineConfig(({ mode }) => ({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png'],
+      includeAssets: [
+        'favicon.ico',
+        'apple-touch-icon.png',
+        'pwa-192x192.png',
+        'pwa-512x512.png',
+        'images/*.png',    // cache all PNGs
+        'images/*.jpg',    // cache all JPGs
+        'sounds/*.mp3'     // (if you have sound files)
+      ],
       manifest: {
         name: 'My Learning App',
         short_name: 'LearningApp',
