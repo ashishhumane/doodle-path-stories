@@ -13,6 +13,7 @@ interface Game {
   icon: string;
   skills: string[];
   estimatedTime: string;
+  to: string;
 }
 
 const Games = () => {
@@ -27,7 +28,8 @@ const Games = () => {
       category: "Letter Formation",
       icon: "✍️",
       skills: ["Letter shapes", "Fine motor control", "Direction"],
-      estimatedTime: "10-15 min"
+      estimatedTime: "10-15 min",
+      to: "/letter-tracing-game"
     },
     {
       id: "spacing-adventure",
@@ -37,7 +39,8 @@ const Games = () => {
       category: "Spacing",
       icon: "🐿️",
       skills: ["Word spacing", "Visual perception", "Consistency"],
-      estimatedTime: "15-20 min"
+      estimatedTime: "15-20 min",
+      to: "/letter-spacing-game"
     },
     {
       id: "pressure-control",
@@ -47,7 +50,8 @@ const Games = () => {
       category: "Pressure Control",
       icon: "🎨",
       skills: ["Writing pressure", "Motor control", "Consistency"],
-      estimatedTime: "10-15 min"
+      estimatedTime: "10-15 min",
+      to: "/letter-trasscing-game"
     },
     {
       id: "handwriting-olympics",
@@ -57,7 +61,8 @@ const Games = () => {
       category: "Comprehensive",
       icon: "🏆",
       skills: ["All handwriting skills", "Speed", "Accuracy"],
-      estimatedTime: "20-30 min"
+      estimatedTime: "20-30 min",
+      to: "/letter-tracingdd-game"
     },
     {
       id: "line-awareness",
@@ -67,7 +72,8 @@ const Games = () => {
       category: "Line Awareness",
       icon: "🐭",
       skills: ["Baseline awareness", "Size consistency", "Control"],
-      estimatedTime: "10-15 min"
+      estimatedTime: "10-15 min",
+      to: "/letter-tracidsng-game"
     },
     {
       id: "cursive-creek",
@@ -77,7 +83,8 @@ const Games = () => {
       category: "Cursive Writing",
       icon: "🌊",
       skills: ["Letter connections", "Fluency", "Rhythm"],
-      estimatedTime: "15-25 min"
+      estimatedTime: "15-25 min",
+      to: "/letter-tracisdsng-game"
     }
   ];
 
@@ -90,11 +97,9 @@ const Games = () => {
     }
   };
 
-  const handleGameStart = (gameId: string) => {
-    // In a real implementation, this would navigate to the specific game
-    // For now, we'll show a placeholder
-    alert(`Starting ${games.find(g => g.id === gameId)?.title}! This would launch the game in a real implementation.`);
-  };
+  const handleGameStart = (path: string) => {
+  navigate(path); // ✅ go to the game route
+};
 
   return (
     <div className="min-h-screen bg-gradient-sky">
@@ -185,7 +190,7 @@ const Games = () => {
                     <Button 
                       variant="leaf" 
                       className="w-full"
-                      onClick={() => handleGameStart(game.id)}
+                      onClick={() => handleGameStart(game.to)}
                     >
                       <Gamepad2 size={16} className="mr-2" />
                       Play Now

@@ -9,7 +9,8 @@ import Upload from "./pages/Upload";
 import Feedback from "./pages/Feedback";
 import Games from "./pages/Games";
 import NotFound from "./pages/NotFound";
-
+import LetterTracingGame from "./pages/lettertracingGame"
+import LetterConfusionGame from "./pages/letterSpacing"
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -24,6 +25,8 @@ const App = () => (
           <Route path="/upload" element={<Upload />} />
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/games" element={<Games />} />
+          <Route path="/letter-tracing-game" element={<LetterTracingGame />} />
+          <Route path="/letter-spacing-game" element={<LetterConfusionGame />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
