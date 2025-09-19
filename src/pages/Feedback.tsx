@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { CheckCircle, Target, TrendingUp, Star, Gamepad2 } from "lucide-react";
 
 interface FeedbackData {
   overallScore: number;
+  encouragement:string;
   strengths: string[];
   improvements: string[];
   suggestions: string[];
@@ -14,8 +15,28 @@ interface FeedbackData {
 
 const Feedback = () => {
   const navigate = useNavigate();
-  const [feedback, setFeedback] = useState<FeedbackData | null>(null);
+  const location = useLocation();
+  // const [feedback, setFeedback] = useState<FeedbackData | null>(null);
   const [loading, setLoading] = useState(true);
+
+  const data = location.state?.analysis;
+
+  if (!data) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-red-600 text-lg">No feedback data available.</p>
+      </div>
+    );
+  }
+
+  const feedback: FeedbackData = {
+    overallScore: data.score,
+    encouragement:data.encouragement,
+    strengths: data.strengths,
+    improvements: data.focusAreas,
+    suggestions: data.tips,
+    recommendedGames: data.recommendedGames,
+  };
 
   useEffect(() => {
     // Simulate AI analysis results
@@ -26,35 +47,6 @@ const Feedback = () => {
       await new Promise(resolve => setTimeout(resolve, 3000));
       
       // Mock feedback data
-      const mockFeedback: FeedbackData = {
-        overallScore: 78,
-        strengths: [
-          "Great letter spacing in most words",
-          "Consistent size for capital letters",
-          "Clear formation of circular letters like 'o' and 'a'",
-          "Good line awareness - staying on the baseline"
-        ],
-        improvements: [
-          "Some letters lean too far to the right",
-          "Letter 'g' needs more consistent descender length",
-          "Spacing between words could be more uniform",
-          "Pressure consistency could be improved"
-        ],
-        suggestions: [
-          "Practice writing between guidelines to improve consistency",
-          "Try slowing down to focus on letter formation",
-          "Use finger spaces between words for better spacing",
-          "Practice grip exercises to improve writing pressure"
-        ],
-        recommendedGames: [
-          "Letter Formation Forest",
-          "Spacing Adventure",
-          "Pressure Control Challenge",
-          "Handwriting Olympics"
-        ]
-      };
-      
-      setFeedback(mockFeedback);
       setLoading(false);
     };
 
@@ -102,13 +94,13 @@ const Feedback = () => {
           <Card className="p-8 shadow-gentle border-forest-moss/30 bg-gradient-magic/10">
             <div className="text-center">
               <div className="text-6xl font-bold text-forest-deep mb-2">
-                {feedback.overallScore}%
+                {feedback && feedback.overallScore}%
               </div>
               <h2 className="text-2xl font-semibold text-forest-deep mb-4">
                 Great Job! 🌟
               </h2>
               <p className="text-forest-medium text-lg">
-                You're making wonderful progress on your writing journey!
+                {feedback && feedback.encouragement}
               </p>
             </div>
           </Card>
@@ -122,7 +114,7 @@ const Feedback = () => {
               </h3>
             </div>
             <div className="grid md:grid-cols-2 gap-3">
-              {feedback.strengths.map((strength, index) => (
+              {feedback && feedback.strengths.map((strength, index) => (
                 <div key={index} className="flex items-start gap-2 p-3 bg-forest-leaf/20 rounded-lg">
                   <Star className="text-magic-warm mt-1 flex-shrink-0" size={16} />
                   <span className="text-forest-deep">{strength}</span>
@@ -140,7 +132,7 @@ const Feedback = () => {
               </h3>
             </div>
             <div className="space-y-3">
-              {feedback.improvements.map((improvement, index) => (
+              {feedback && feedback.improvements.map((improvement, index) => (
                 <div key={index} className="flex items-start gap-2 p-3 bg-earth-light/20 rounded-lg">
                   <TrendingUp className="text-earth-medium mt-1 flex-shrink-0" size={16} />
                   <span className="text-forest-deep">{improvement}</span>
@@ -155,7 +147,7 @@ const Feedback = () => {
               💡 Helpful Tips for Improvement
             </h3>
             <div className="space-y-3">
-              {feedback.suggestions.map((suggestion, index) => (
+              {feedback && feedback.suggestions.map((suggestion, index) => (
                 <div key={index} className="flex items-start gap-2 p-3 bg-sky-light/30 rounded-lg">
                   <span className="text-sky-medium font-semibold mt-1">{index + 1}.</span>
                   <span className="text-forest-deep">{suggestion}</span>
@@ -176,7 +168,7 @@ const Feedback = () => {
               Based on your handwriting analysis, these games will help you improve:
             </p>
             <div className="grid sm:grid-cols-2 gap-3 mb-6">
-              {feedback.recommendedGames.map((game, index) => (
+              {feedback && feedback.recommendedGames.map((game, index) => (
                 <div key={index} className="p-3 bg-magic-warm/20 rounded-lg text-center">
                   <span className="text-forest-deep font-medium">{game}</span>
                 </div>
