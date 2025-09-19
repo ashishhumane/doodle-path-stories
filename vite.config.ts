@@ -24,18 +24,18 @@ export default defineConfig(({ mode }) => ({
         'sounds/*.mp3'     // (if you have sound files)
       ],
       manifest: {
-        name: 'My Learning App',
-        short_name: 'LearningApp',
-        description: 'An offline-friendly student learning platform',
+        name: 'Doodle Path Stories',
+        short_name: 'DoodleStories',
+        description: 'A fun educational game',
         theme_color: '#ffffff',
         icons: [
           {
-            src: 'pwa-192x192.png',
+            src: '/pwa-192x192.png', // ✅ use relative path
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: 'pwa-512x512.png',
+            src: '/pwa-512x512.png', // ✅ use relative path
             sizes: '512x512',
             type: 'image/png'
           }
