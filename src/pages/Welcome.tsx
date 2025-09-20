@@ -5,9 +5,13 @@ import forestEntrance from "@/assets/forest-entrance.jpg";
 const Welcome = () => {
   const navigate = useNavigate();
 
+  let goToHome = () => {
+    window.location.href = "http://localhost:8080";
+  }
   return (
     <div className="min-h-screen bg-gradient-sky relative overflow-hidden">
       {/* Background forest image */}
+      
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${forestEntrance})` }}
@@ -19,6 +23,8 @@ const Welcome = () => {
       <div className="absolute top-20 left-10 w-4 h-4 bg-magic-glow rounded-full opacity-60" />
       <div className="absolute top-40 right-20 w-3 h-3 bg-magic-warm rounded-full opacity-70" />
       <div className="absolute bottom-32 left-20 w-5 h-5 bg-magic-soft rounded-full opacity-50" />
+
+      <button onClick={goToHome} className="fixed top-5 left-5 z-20 bg-green-500 hover:bg-green-700 text-white p-3 rounded-full shadow-lg text-2xl transition" >Back</button>
       
       {/* Main content */}
       <div className="relative z-10 flex min-h-screen items-center justify-center px-4">
