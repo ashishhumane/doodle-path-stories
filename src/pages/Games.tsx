@@ -41,51 +41,51 @@ const Games = () => {
       skills: ["Word spacing", "Visual perception", "Consistency"],
       estimatedTime: "15-20 min",
       to: "/letter-spacing-game"
-    },
-    {
-      id: "pressure-control",
-      title: "Pressure Control Challenge",
-      description: "Paint forest scenes with different brush pressures to create light and dark effects.",
-      difficulty: "Medium",
-      category: "Pressure Control",
-      icon: "🎨",
-      skills: ["Writing pressure", "Motor control", "Consistency"],
-      estimatedTime: "10-15 min",
-      to: "/letter-trasscing-game"
-    },
-    {
-      id: "handwriting-olympics",
-      title: "Handwriting Olympics",
-      description: "Compete in fun writing challenges with forest creatures in this multi-level competition.",
-      difficulty: "Hard",
-      category: "Comprehensive",
-      icon: "🏆",
-      skills: ["All handwriting skills", "Speed", "Accuracy"],
-      estimatedTime: "20-30 min",
-      to: "/letter-tracingdd-game"
-    },
-    {
-      id: "line-awareness",
-      title: "Tightrope Walker",
-      description: "Help a brave mouse walk the tightrope by staying perfectly on the baseline while writing.",
-      difficulty: "Easy",
-      category: "Line Awareness",
-      icon: "🐭",
-      skills: ["Baseline awareness", "Size consistency", "Control"],
-      estimatedTime: "10-15 min",
-      to: "/letter-tracidsng-game"
-    },
-    {
-      id: "cursive-creek",
-      title: "Cursive Creek",
-      description: "Follow the flowing river path to practice cursive letter connections in beautiful forest scenes.",
-      difficulty: "Hard",
-      category: "Cursive Writing",
-      icon: "🌊",
-      skills: ["Letter connections", "Fluency", "Rhythm"],
-      estimatedTime: "15-25 min",
-      to: "/letter-tracisdsng-game"
     }
+    // {
+    //   id: "pressure-control",
+    //   title: "Pressure Control Challenge",
+    //   description: "Paint forest scenes with different brush pressures to create light and dark effects.",
+    //   difficulty: "Medium",
+    //   category: "Pressure Control",
+    //   icon: "🎨",
+    //   skills: ["Writing pressure", "Motor control", "Consistency"],
+    //   estimatedTime: "10-15 min",
+    //   to: "/letter-trasscing-game"
+    // },
+    // {
+    //   id: "handwriting-olympics",
+    //   title: "Handwriting Olympics",
+    //   description: "Compete in fun writing challenges with forest creatures in this multi-level competition.",
+    //   difficulty: "Hard",
+    //   category: "Comprehensive",
+    //   icon: "🏆",
+    //   skills: ["All handwriting skills", "Speed", "Accuracy"],
+    //   estimatedTime: "20-30 min",
+    //   to: "/letter-tracingdd-game"
+    // },
+    // {
+    //   id: "line-awareness",
+    //   title: "Tightrope Walker",
+    //   description: "Help a brave mouse walk the tightrope by staying perfectly on the baseline while writing.",
+    //   difficulty: "Easy",
+    //   category: "Line Awareness",
+    //   icon: "🐭",
+    //   skills: ["Baseline awareness", "Size consistency", "Control"],
+    //   estimatedTime: "10-15 min",
+    //   to: "/letter-tracidsng-game"
+    // },
+    // {
+    //   id: "cursive-creek",
+    //   title: "Cursive Creek",
+    //   description: "Follow the flowing river path to practice cursive letter connections in beautiful forest scenes.",
+    //   difficulty: "Hard",
+    //   category: "Cursive Writing",
+    //   icon: "🌊",
+    //   skills: ["Letter connections", "Fluency", "Rhythm"],
+    //   estimatedTime: "15-25 min",
+    //   to: "/letter-tracisdsng-game"
+    // }
   ];
 
   const getDifficultyColor = (difficulty: string) => {

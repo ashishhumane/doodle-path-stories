@@ -11,6 +11,7 @@ import Games from "./pages/Games";
 import NotFound from "./pages/NotFound";
 import LetterTracingGame from "./pages/lettertracingGame"
 import LetterConfusionGame from "./pages/letterSpacing"
+import LetterConfusion from './pages/confusionGame'
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/games" element={<Games />} />
           <Route path="/letter-tracing-game" element={<LetterTracingGame />} />
           <Route path="/letter-spacing-game" element={<LetterConfusionGame />} />
+          <Route path="/letter-confusion-game" element={<LetterConfusion />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
