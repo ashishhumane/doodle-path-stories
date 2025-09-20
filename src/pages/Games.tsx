@@ -41,18 +41,18 @@ const Games = () => {
       skills: ["Word spacing", "Visual perception", "Consistency"],
       estimatedTime: "15-20 min",
       to: "/letter-spacing-game"
+    },
+    {
+      id: "Letter Confusion",
+      title: "Letter Challenge",
+      description: "Paint forest scenes with different brush pressures to create light and dark effects.",
+      difficulty: "Medium",
+      category: "Letters",
+      icon: "🎨",
+      skills: ["Writing pressure", "Motor control", "Consistency"],
+      estimatedTime: "10-15 min",
+      to: "/letter-confusion-game"
     }
-    // {
-    //   id: "pressure-control",
-    //   title: "Pressure Control Challenge",
-    //   description: "Paint forest scenes with different brush pressures to create light and dark effects.",
-    //   difficulty: "Medium",
-    //   category: "Pressure Control",
-    //   icon: "🎨",
-    //   skills: ["Writing pressure", "Motor control", "Consistency"],
-    //   estimatedTime: "10-15 min",
-    //   to: "/letter-trasscing-game"
-    // },
     // {
     //   id: "handwriting-olympics",
     //   title: "Handwriting Olympics",
